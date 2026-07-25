@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karan M. Mali | Software & Web Developer Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #12121a;
+      --card: rgba(255,255,255,.03);
+      --border: rgba(255,255,255,.08);
+      --text: #f0f0f5;
+      --muted: #a0a0b8;
+      --accent: #7c5cfc;
+      --accent2: #9b7fff;
+      --glow: rgba(124,92,252,.4);
+      --grad: linear-gradient(135deg,#7c5cfc,#c084fc,#f472b6);
+      --gradsoft: linear-gradient(135deg,rgba(124,92,252,.15),rgba(192,132,252,.08));
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,system-ui,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+      line-height:1.6;
+    }
+    ::-webkit-scrollbar{width:8px}
+    ::-webkit-scrollbar-track{background:var(--bg)}
+    ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:4px}
+
+    /* Navbar */
+    .navbar{
+      background:rgba(10,10,15,.8)!important;
+      backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--border);
+      padding:1rem 0;
+      transition:.3s;
+    }
+    .navbar.scrolled{
+      padding:.6rem 0;
+      box-shadow:0 10px 40px rgba(0,0,0,.4);
+    }
+    .navbar-brand{
+      font-family:'Space Grotesk',sans-serif;
+      font-weight:700;
+      font-size:1.5rem;
+      background:var(--grad);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .nav-link{
+      color:var(--muted)!important;
+      font-weight:500;
+      font-size:.95rem;
+      margin:0 .4rem;
+      position:relative;
+      transition:.3s;
+    }
+    .nav-link::after{
+      content:'';
+      position:absolute;
+      bottom:-2px;
+      left:0;
+      width:0;
+      height:2px;
+      background:var(--grad);
+      transition:.3s;
+    }
+    .nav-link:hover,.nav-link.active{color:var(--text)!important}
+    .nav-link:hover::after,.nav-link.active::after{width:100%}
+    .btn-hire{
+      background:var(--grad);
+      border:none;
+      color:#fff;
+      font-weight:600;
+      padding:.5rem 1.4rem;
+      border-radius:50px;
+      transition:.3s;
+      box-shadow:0 4px 20px var(--glow);
+    }
+    .btn-hire:hover{
+      transform:translateY(-2px);
+      box-shadow:0 8px 30px var(--glow);
+      color:#fff;
+    }
+
+    /* Hero */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      padding-top:80px;
+      overflow:hidden;
+    }
+    .hero-bg{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% 40%,rgba(124,92,252,.15),transparent),
+        radial-gradient(ellipse 60% 40% at 80% 60%,rgba(244,114,182,.1),transparent);
+      z-index:0;
+    }
+    .hero-content{position:relative;z-index:2}
+    .hero-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      background:var(--card);
+      border:1px solid var(--border);
+      padding:.4rem 1rem;
+      border-radius:50px;
+      font-size:.85rem;
+      color:var(--accent2);
+      margin-bottom:1.5rem;
+      animation:fadeInUp .8s ease forwards;
+    }
+    .hero-badge .dot{
+      width:8px;height:8px;
+      background:#22c55e;
+      border-radius:50%;
+      animation:pulse 2s infinite;
+    }
+    .hero h1{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:clamp(2.8rem,6vw,4.5rem);
+      font-weight:700;
+      line-height:1.1;
+      margin-bottom:1.2rem;
+      animation:fadeInUp .8s ease .1s both;
+    }
+    .hero h1 .gt{
+      background:var(--grad);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .hero .lead{
+      font-size:1.2rem;
+      color:var(--muted);
+      max-width:540px;
+      margin-bottom:2rem;
+      animation:fadeInUp .8s ease .2s both;
+    }
+    .hero-btns{
+      display:flex;
+      flex-wrap:wrap;
+      gap:1rem;
+      animation:fadeInUp .8s ease .3s both;
+    }
+    .btn-p{
+      background:var(--grad);
+      border:none;
+      color:#fff;
+      font-weight:600;
+      padding:.85rem 2rem;
+      border-radius:50px;
+      transition:.3s;
+      box-shadow:0 4px 25px var(--glow);
+    }
+    .btn-p:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 35px var(--glow);
+      color:#fff;
+    }
+    .btn-o{
+      background:transparent;
+      border:1px solid var(--border);
+      color:var(--text);
+      font-weight:600;
+      padding:.85rem 2rem;
+      border-radius:50px;
+      transition:.3s;
+    }
+    .btn-o:hover{
+      background:var(--card);
+      border-color:var(--accent);
+      color:var(--text);
+      transform:translateY(-3px);
+    }
+    .hero-stats{
+      display:flex;
+      gap:2.5rem;
+      margin-top:3.5rem;
+      animation:fadeInUp .8s ease .4s both;
+    }
+    .stat-item h3{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:2rem;
+      font-weight:700;
+      background:var(--grad);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:.2rem;
+    }
+    .stat-item p{color:var(--muted);font-size:.9rem;margin:0}
+    .shape{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(60px);
+      opacity:.5;
+      z-index:1;
+      animation:float 8s ease-in-out infinite;
+    }
+    .shape-1{width:300px;height:300px;background:var(--accent);top:15%;right:10%}
+    .shape-2{width:200px;height:200px;background:#f472b6;bottom:20%;left:5%;animation-delay:2s}
+
+    /* Sections */
+    section{padding:100px 0;position:relative}
+    .sl{
+      display:inline-block;
+      font-size:.85rem;
+      font-weight:600;
+      color:var(--accent2);
+      text-transform:uppercase;
+      letter-spacing:2px;
+      margin-bottom:.8rem;
+    }
+    .st{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:clamp(2rem,4vw,2.8rem);
+      font-weight:700;
+      margin-bottom:1rem;
+    }
+    .ss{color:var(--muted);max-width:560px;margin-bottom:3rem}
+
+    /* About Image */
+    .about-img{
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      aspect-ratio:1;
+      background:var(--gradsoft);
+      box-shadow:0 25px 60px rgba(124,92,252,.2);
+    }
+    .about-img img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition:transform .5s ease;
+    }
+    .about-img:hover img{transform:scale(1.05)}
+
+    .about-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:1.5rem;
+      transition:.3s;
+    }
+    .about-card:hover{
+      border-color:var(--accent);
+      transform:translateY(-4px);
+      box-shadow:0 15px 40px rgba(124,92,252,.15);
+    }
+    .about-card i{
+      font-size:1.8rem;
+      background:var(--grad);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:.8rem;
+    }
+
+    /* Skills */
+    .skill-card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:1.8rem;
+      height:100%;
+      transition:.35s;
+      position:relative;
+      overflow:hidden;
+    }
+    .skill-card::before{
+      content:'';
+      position:absolute;
+      top:0;left:0;
+      width:100%;height:3px;
+      background:var(--grad);
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:.4s;
+    }
+    .skill-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(124,92,252,.4);
+      box-shadow:0 20px 50px rgba(124,92,252,.12);
+    }
+    .skill-card:hover::before{transform:scaleX(1)}
+    .skill-icon{
+      width:52px;height:52px;
+      border-radius:12px;
+      background:var(--gradsoft);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.5rem;
+      color:var(--accent2);
+      margin-bottom:1.2rem;
+    }
+    .skill-card h5{font-weight:600;margin-bottom:.5rem}
+    .skill-card p{color:var(--muted);font-size:.9rem;margin-bottom:1.2rem}
+    .prog{height:6px;background:rgba(255,255,255,.06);border-radius:10px;overflow:hidden}
+    .pbar{height:100%;background:var(--grad);border-radius:10px;width:0;transition:width 1.5s cubic-bezier(.22,1,.36,1)}
+
+    /* Projects */
+    .proj{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:20px;
+      overflow:hidden;
+      height:100%;
+      transition:.4s;
+    }
+    .proj:hover{
+      transform:translateY(-10px);
+      border-color:rgba(124,92,252,.5);
+      box-shadow:0 25px 60px rgba(124,92,252,.15);
+    }
+    .proj-img{
+      height:220px;
+      background:var(--gradsoft);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .proj-img .il{
+      font-size:4rem;
+      color:var(--accent2);
+      opacity:.7;
+      transition:.4s;
+    }
+    .proj:hover .il{transform:scale(1.15);opacity:1}
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:rgba(10,10,15,.7);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:1rem;
+      opacity:0;
+      transition:.3s;
+    }
+    .proj:hover .overlay{opacity:1}
+    .overlay a{
+      width:48px;height:48px;
+      border-radius:50%;
+      background:var(--grad);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-size:1.2rem;
+      transition:.3s;
+    }
+    .overlay a:hover{transform:scale(1.1);color:#fff}
+    .proj-body{padding:1.5rem}
+    .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.8rem}
+    .tag{
+      font-size:.75rem;
+      padding:.25rem .7rem;
+      border-radius:50px;
+      background:rgba(124,92,252,.15);
+      color:var(--accent2);
+      font-weight:500;
+    }
+    .proj-body h5{font-weight:600;margin-bottom:.5rem}
+    .proj-body p{color:var(--muted);font-size:.9rem;margin:0}
+
+    /* Timeline */
+    .timeline{position:relative;padding-left:2rem}
+    .timeline::before{
+      content:'';
+      position:absolute;
+      left:0;top:0;bottom:0;
+      width:2px;
+      background:linear-gradient(to bottom,var(--accent),transparent);
+    }
+    .titem{position:relative;padding-bottom:2.5rem}
+    .titem:last-child{padding-bottom:0}
+    .titem::before{
+      content:'';
+      position:absolute;
+      left:-2rem;top:6px;
+      width:12px;height:12px;
+      border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 4px rgba(124,92,252,.25);
+      transform:translateX(-5px);
+    }
+    .tdate{font-size:.85rem;color:var(--accent2);font-weight:500;margin-bottom:.3rem}
+    .titem h5{font-weight:600;margin-bottom:.3rem}
+    .titem .co{color:var(--muted);font-size:.9rem;margin-bottom:.6rem}
+    .titem p{color:var(--muted);font-size:.95rem;margin:0}
+
+    /* Contact */
+    .cform{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:20px;
+      padding:2.5rem;
+    }
+    .form-control{
+      background:rgba(255,255,255,.03);
+      border:1px solid var(--border);
+      color:var(--text);
+      border-radius:12px;
+      padding:.85rem 1.2rem;
+      transition:.3s;
+    }
+    .form-control:focus{
+      background:rgba(255,255,255,.05);
+      border-color:var(--accent);
+      box-shadow:0 0 0 3px rgba(124,92,252,.2);
+      color:var(--text);
+    }
+    .form-control::placeholder{color:var(--muted)}
+    .cinfo{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.5rem}
+    .ibox{
+      width:48px;height:48px;
+      border-radius:12px;
+      background:var(--gradsoft);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--accent2);
+      font-size:1.3rem;
+      flex-shrink:0;
+    }
+    .cinfo h6{font-weight:600;margin-bottom:.2rem}
+    .cinfo p{color:var(--muted);margin:0;font-size:.95rem}
+
+    /* Footer */
+    footer{
+      border-top:1px solid var(--border);
+      padding:2.5rem 0;
+      background:var(--bg2);
+    }
+    .social a{
+      width:42px;height:42px;
+      border-radius:50%;
+      border:1px solid var(--border);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--muted);
+      margin-right:.6rem;
+      transition:.3s;
+    }
+    .social a:hover{
+      background:var(--grad);
+      border-color:transparent;
+      color:#fff;
+      transform:translateY(-3px);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(30px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    @keyframes pulse{
+      0%,100%{opacity:1;transform:scale(1)}
+      50%{opacity:.5;transform:scale(1.2)}
+    }
+    @keyframes float{
+      0%,100%{transform:translateY(0) rotate(0)}
+      50%{transform:translateY(-30px) rotate(5deg)}
+    }
+    .reveal{
+      opacity:0;
+      transform:translateY(40px);
+      transition:all .8s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.active{opacity:1;transform:translateY(0)}
+    .cursor{
+      display:inline-block;
+      width:3px;height:1.1em;
+      background:var(--accent);
+      margin-left:4px;
+      animation:blink .8s infinite;
+      vertical-align:text-bottom;
+    }
+    @keyframes blink{
+      0%,100%{opacity:1}
+      50%{opacity:0}
+    }
+
+    /* Responsive */
+    @media(max-width:991px){
+      .hero-stats{gap:1.5rem}
+      .shape-1,.shape-2{display:none}
+    }
+    @media(max-width:576px){
+      section{padding:70px 0}
+      .hero-stats{flex-direction:column;gap:1rem}
+      .cform{padding:1.5rem}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="#home">KM.</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <i class="bi bi-list text-white fs-3"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item ms-lg-3"><a href="#contact" class="btn btn-hire">Hire Me</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7 hero-content">
+          <div class="hero-badge">
+            <span class="dot"></span> Available for freelance work
+          </div>
+          <h1>
+            Hi, I'm <span class="gt">Karan M. Mali</span><br>
+            <span id="typed"></span><span class="cursor"></span>
+          </h1>
+          <p class="lead">
+            Corporate Software & Web Developer skilled in HTML, CSS, JavaScript, Node.js, PHP, and MongoDB — building modern, responsive, and scalable web applications with clean code and intuitive user experiences.
+          </p>
+          <div class="hero-btns">
+            <a href="#projects" class="btn btn-p"><i class="bi bi-grid-3x3-gap me-2"></i>View Projects</a>
+            <a href="#contact" class="btn btn-o"><i class="bi bi-chat-dots me-2"></i>Let's Talk</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item"><h3>1+</h3><p>Years Experience</p></div>
+            <div class="stat-item"><h3>5+</h3><p>Projects Completed</p></div>
+            <div class="stat-item"><h3>7+</h3><p>Happy Clients</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-5 reveal">
+          <div class="about-img">
+            <img src="images/karan_mali.jpeg" alt="Karan M. Mali - Software & Web Developer">
+          </div>
+        </div>
+        <div class="col-lg-7 reveal">
+          <span class="sl">About Me</span>
+          <h2 class="st">Turning ideas into<br>digital experiences</h2>
+          <p class="ss mb-4">
+            Karan Mali is a Corporate Software & Web Developer with experience in designing and developing modern, responsive, and scalable web applications. Skilled in HTML, CSS, JavaScript, Node.js, PHP, and MongoDB, he focuses on building high-performance digital solutions with clean code and intuitive user experiences. He is committed to innovation, continuous learning, and delivering technology solutions that drive business growth.
+          </p>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <div class="about-card">
+                <i class="bi bi-code-slash"></i>
+                <h6>Clean Code</h6>
+                <p class="text-secondary mb-0 small">Readable, maintainable, and scalable codebases.</p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="about-card">
+                <i class="bi bi-palette"></i>
+                <h6>Pixel Perfect</h6>
+                <p class="text-secondary mb-0 small">Attention to detail in every interface element.</p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="about-card">
+                <i class="bi bi-lightning-charge"></i>
+                <h6>Performance</h6>
+                <p class="text-secondary mb-0 small">Fast load times and website optimization.</p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="about-card">
+                <i class="bi bi-people"></i>
+                <h6>Collaboration</h6>
+                <p class="text-secondary mb-0 small">Great communication with teams & clients.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" style="background:var(--bg2)">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="sl">Skills</span>
+        <h2 class="st">Technologies I work with</h2>
+        <p class="ss mx-auto">A selection of tools and technologies I use to bring products to life.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="skill-card">
+            <div class="skill-icon"><i class="bi bi-filetype-html"></i></div>
+            <h5>Frontend</h5>
+            <p>HTML5, CSS3, JavaScript (ES6+), Bootstrap, Tailwind CSS, Responsive Web Design</p>
+            <div class="prog"><div class="pbar" data-w="90%"></div></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="skill-card">
+            <div class="skill-icon"><i class="bi bi-server"></i></div>
+            <h5>Backend</h5>
+            <p>Node.js, Express.js, PHP, REST APIs, MongoDB, MySQL</p>
+            <div class="prog"><div class="pbar" data-w="85%"></div></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="skill-card">
+            <div class="skill-icon"><i class="bi bi-tools"></i></div>
+            <h5>Tools & Workflow</h5>
+            <p>Git, GitHub, VS Code, Postman, npm, Website Performance Optimization, SEO Fundamentals, Cross-Browser Compatibility</p>
+            <div class="prog"><div class="pbar" data-w="88%"></div></div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="skill-card">
+            <div class="skill-icon"><i class="bi bi-people-fill"></i></div>
+            <h5>Design & Soft Skills</h5>
+            <p>UI/UX Design, Problem Solving, Team Collaboration, Time Management, Communication, Adaptability, Continuous Learning</p>
+            <div class="prog"><div class="pbar" data-w="90%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="sl">Portfolio</span>
+        <h2 class="st">Selected Projects</h2>
+        <p class="ss mx-auto">A few highlights from recent work. Each project is a unique challenge solved with care.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="proj">
+            <div class="proj-img">
+              <i class="bi bi-briefcase il"></i>
+              <div class="overlay">
+                <a href="#"><i class="bi bi-box-arrow-up-right"></i></a>
+                <a href="#"><i class="bi bi-github"></i></a>
+              </div>
+            </div>
+            <div class="proj-body">
+              <div class="tags">
+                <span class="tag">HTML/CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">SEO</span>
+              </div>
+              <h5>Business Profile Website</h5>
+              <p>Responsive business website with modern UI/UX, SEO optimization, contact forms, Google Maps integration, and social media connectivity.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="proj">
+            <div class="proj-img">
+              <i class="bi bi-person-badge il"></i>
+              <div class="overlay">
+                <a href="#"><i class="bi bi-box-arrow-up-right"></i></a>
+                <a href="#"><i class="bi bi-github"></i></a>
+              </div>
+            </div>
+            <div class="proj-body">
+              <div class="tags">
+                <span class="tag">HTML/CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Animations</span>
+              </div>
+              <h5>Portfolio Website</h5>
+              <p>Personal portfolio showcasing skills, projects, and professional experience with responsive design and smooth animations.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="proj">
+            <div class="proj-img">
+              <i class="bi bi-building il"></i>
+              <div class="overlay">
+                <a href="#"><i class="bi bi-box-arrow-up-right"></i></a>
+                <a href="#"><i class="bi bi-github"></i></a>
+              </div>
+            </div>
+            <div class="proj-body">
+              <div class="tags">
+                <span class="tag">HTML/CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Responsive</span>
+              </div>
+              <h5>Construction Company Website</h5>
+              <p>Corporate website featuring company services, project gallery, inquiry forms, and mobile-friendly layouts.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="proj">
+            <div class="proj-img">
+              <i class="bi bi-tools il"></i>
+              <div class="overlay">
+                <a href="#"><i class="bi bi-box-arrow-up-right"></i></a>
+                <a href="#"><i class="bi bi-github"></i></a>
+              </div>
+            </div>
+            <div class="proj-body">
+              <div class="tags">
+                <span class="tag">Node.js</span>
+                <span class="tag">Express.js</span>
+                <span class="tag">MongoDB</span>
+              </div>
+              <h5>Home Services Booking Platform</h5>
+              <p>Full-stack web application for booking home services with user, worker, and admin modules.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="proj">
+            <div class="proj-img">
+              <i class="bi bi-cart3 il"></i>
+              <div class="overlay">
+                <a href="#"><i class="bi bi-box-arrow-up-right"></i></a>
+                <a href="#"><i class="bi bi-github"></i></a>
+              </div>
+            </div>
+            <div class="proj-body">
+              <div class="tags">
+                <span class="tag">JavaScript</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Auth</span>
+              </div>
+              <h5>E-Commerce Website</h5>
+              <p>Responsive online shopping platform with product listings, shopping cart, user authentication, and order management.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" style="background:var(--bg2)">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 reveal mb-4 mb-lg-0">
+          <span class="sl">Career</span>
+          <h2 class="st">Work Experience</h2>
+          <p class="ss">Building products and delivering technology solutions for businesses and clients.</p>
+        </div>
+        <div class="col-lg-7">
+          <div class="timeline">
+            <div class="titem reveal">
+              <div class="tdate">Present</div>
+              <h5>Corporate Web & Software Developer</h5>
+              <div class="co">Freelance / Corporate Projects · Pune</div>
+              <p>Specializing in responsive website development, full-stack web applications, API integration, database management, UI/UX implementation, and website optimization using modern web technologies.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="sl">Contact</span>
+        <h2 class="st">Let's build something great</h2>
+        <p class="ss mx-auto">Have a project in mind or just want to say hi? Feel free to reach out — I'd love to hear from you.</p>
+      </div>
+      <div class="row g-5">
+        <div class="col-lg-5 reveal">
+          <div class="cinfo">
+            <div class="ibox"><i class="bi bi-envelope"></i></div>
+            <div>
+              <h6>Email</h6>
+              <p>karanmali490@gmail.com</p>
+            </div>
+          </div>
+          <div class="cinfo">
+            <div class="ibox"><i class="bi bi-telephone"></i></div>
+            <div>
+              <h6>Phone / WhatsApp</h6>
+              <p>+91 9766849858</p>
+            </div>
+          </div>
+          <div class="cinfo">
+            <div class="ibox"><i class="bi bi-geo-alt"></i></div>
+            <div>
+              <h6>Location</h6>
+              <p>Pune, Maharashtra · Open to remote</p>
+            </div>
+          </div>
+          <div class="cinfo">
+            <div class="ibox"><i class="bi bi-clock"></i></div>
+            <div>
+              <h6>Availability</h6>
+              <p>Usually replies within 24 hours</p>
+            </div>
+          </div>
+          <div class="social mt-4">
+            <a href="https://github.com/karanmali490" target="_blank" rel="noopener"><i class="bi bi-github"></i></a>
+            <a href="https://www.linkedin.com/in/karan-mali-2a8887318/" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
+            <a href="https://x.com/Karanmali_490" target="_blank" rel="noopener"><i class="bi bi-twitter-x"></i></a>
+            <a href="https://wa.me/919766849858" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-7 reveal">
+          <form class="cform" onsubmit="return handleSubmit(event)">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6">
+                <input type="email" class="form-control" placeholder="Your Email" required>
+              </div>
+              <div class="col-12">
+                <input type="text" class="form-control" placeholder="Subject">
+              </div>
+              <div class="col-12">
+                <textarea class="form-control" rows="5" placeholder="Tell me about your project..." required></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-p w-100">
+                  <i class="bi bi-send me-2"></i>Send Message
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          <p class="mb-0 text-secondary small">© 2026 Karan M. Mali. Crafted with care.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#home" class="text-secondary text-decoration-none small">
+            <i class="bi bi-arrow-up me-1"></i>Back to top
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Typing effect
+    const roles = ["Software Developer", "Web Developer", "Full-Stack Developer", "Problem Solver"];
+    let ri = 0, ci = 0, del = false;
+    const el = document.getElementById("typed");
+
+    function type() {
+      const c = roles[ri];
+      if (del) {
+        el.textContent = c.substring(0, ci - 1);
+        ci--;
+      } else {
+        el.textContent = c.substring(0, ci + 1);
+        ci++;
+      }
+      let d = del ? 40 : 80;
+      if (!del && ci === c.length) {
+        d = 1800;
+        del = true;
+      } else if (del && ci === 0) {
+        del = false;
+        ri = (ri + 1) % roles.length;
+        d = 400;
+      }
+      setTimeout(type, d);
+    }
+    type();
+
+    // Navbar scroll effect
+    const nav = document.getElementById("navbar");
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 50);
+    });
+
+    // Active nav link
+    const secs = document.querySelectorAll("section[id]");
+    const links = document.querySelectorAll(".nav-link");
+    function active() {
+      let cur = "";
+      secs.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) cur = s.id;
+      });
+      links.forEach(l => {
+        l.classList.toggle("active", l.getAttribute("href") === "#" + cur);
+      });
+    }
+    window.addEventListener("scroll", active);
+
+    // Scroll reveal
+    document.querySelectorAll(".reveal").forEach(el => {
+      new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add("active");
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }).observe(el);
+    });
+
+    // Skill progress bars
+    document.querySelectorAll(".pbar").forEach(b => {
+      new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.style.width = e.target.dataset.w;
+          }
+        });
+      }, { threshold: 0.5 }).observe(b);
+    });
+
+    // Contact form demo
+   function handleSubmit(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const name = form.querySelector('input[type="text"]').value.trim();
+  const email = form.querySelector('input[type="email"]').value.trim();
+  const subject = form.querySelectorAll('input[type="text"]')[1].value.trim() || "No Subject";
+  const message = form.querySelector('textarea').value.trim();
+
+  // Your WhatsApp number (without + or spaces)
+  const phone = "919766849858";
+
+  // Create the message
+  const text = 
+`*New Portfolio Inquiry*
+
+*Name:* ${name}
+*Email:* ${email}
+*Subject:* ${subject}
+
+*Message:*
+${message}`;
+
+  // Encode and open WhatsApp
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+  window.open(url, "_blank");
+
+  // Button feedback
+  const btn = form.querySelector("button");
+  const original = btn.innerHTML;
+  btn.innerHTML = '<i class="bi bi-whatsapp me-2"></i>Opening WhatsApp...';
+  btn.disabled = true;
+
+  setTimeout(() => {
+    btn.innerHTML = original;
+    btn.disabled = false;
+    form.reset();
+  }, 2500);
+
+  return false;
+}
+    // Close mobile menu on link click
+    document.querySelectorAll(".nav-link, .btn-hire").forEach(l => {
+      l.addEventListener("click", () => {
+        const collapse = document.querySelector(".navbar-collapse");
+        if (collapse.classList.contains("show")) {
+          bootstrap.Collapse.getInstance(collapse)?.hide();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
